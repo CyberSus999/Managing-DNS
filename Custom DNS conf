@@ -1,0 +1,22 @@
+--Set up custom name server
+cat /etc/resolve.conf
+--install  resolveconf
+sudo apt install resolveconf
+systemctl enable resolveconf.service
+systemctl start resolveconf.service
+systemctl status resolveconf.service
+
+--edit the file 
+nano /etc/resolvconf/resolv.confd/base
+nameserver <1.1.1.1>
+nameserver <add>
+nameserver <add>
+#add as much 
+
+nano /etc/network/Interfaces
+dns-nameservers <n.s> <2> <3>
+
+systemctl restart resolveconf.service
+systemcl restart NetworkManager
+
+
